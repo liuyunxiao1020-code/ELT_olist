@@ -69,9 +69,9 @@ The raw data consists of 9 tables (~1.1M records) loaded into BigQuery under the
 
 ---
 
-### For the project owner only — adding group members to GCP
+### For the project owner only — adding members to GCP
 
-> Skip this section if you are a group member. Send your Google account email to Marcus.
+> Skip this section if you are not the project owner. Send your Google account email to Marcus.
 
 1. Go to [GCP Console](https://console.cloud.google.com) and select the `olist-498903` project
 2. Navigate to **IAM & Admin → IAM**
