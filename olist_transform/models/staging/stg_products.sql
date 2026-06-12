@@ -1,5 +1,5 @@
 WITH products AS (
-    SELECT
+    SELECT DISTINCT
         p.product_id,
         COALESCE(t.product_category_name_english, p.product_category_name) AS product_category_name_english,
         SAFE_CAST(p.product_name_lenght AS INT64 ) AS product_name_length,

@@ -1,5 +1,5 @@
 WITH customers AS (
-    SELECT 
+    SELECT DISTINCT
         customer_id,
         customer_unique_id,
         LPAD(SAFE_CAST(customer_zip_code_prefix AS STRING), 5, '0') AS zip_code,

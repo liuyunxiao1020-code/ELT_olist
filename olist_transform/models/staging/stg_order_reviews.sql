@@ -1,5 +1,5 @@
 WITH order_reviews AS (
-    SELECT
+    SELECT DISTINCT
         review_id,
         order_id,
         SAFE_CAST(review_score AS INT64) AS review_score,

@@ -1,5 +1,5 @@
 WITH sellers AS (
-    SELECT 
+    SELECT DISTINCT
         seller_id,
         LPAD(SAFE_CAST(seller_zip_code_prefix AS STRING), 5, '0') AS zip_code,
         seller_city AS city,
