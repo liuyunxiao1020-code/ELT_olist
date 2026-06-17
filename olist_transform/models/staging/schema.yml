@@ -44,7 +44,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['delivered', 'shipped', 'canceled', 'unavailable', 'invoiced', 'processing', 'approved', 'created']
+              arguments:
+                values: ['delivered', 'shipped', 'canceled', 'unavailable', 'invoiced', 'processing', 'approved', 'created']
       - name: order_purchase_timestamp
         tests:
           - not_null
@@ -101,7 +102,11 @@ models:
               strictly: false
 
   - name: stg_order_payments
-    description: Payment records per order. One order can have multiple payment types.
+    description: >
+      Payment records per order. One order can have multiple payment types.
+      Known data quality gap: at least one delivered order in the Olist dataset
+      (order_id bfbd0f9bdef84302105ad712db648a6c) has no matching payment record.
+      Downstream marts coalesce total_payment_value to 0 for such orders.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -120,7 +125,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['credit_card', 'boleto', 'voucher', 'debit_card', 'not_defined']
+              arguments:
+                values: ['credit_card', 'boleto', 'voucher', 'debit_card', 'not_defined']
       - name: payment_installments
         tests:
           - not_null
@@ -153,8 +159,9 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: [1, 2, 3, 4, 5]
-              quote: false
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
       - name: review_comment_title
         description: Optional short title left by the customer.
       - name: review_comment_message

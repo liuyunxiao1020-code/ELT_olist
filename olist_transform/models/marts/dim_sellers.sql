@@ -15,9 +15,9 @@ sellers AS (
         s.state,
         g.latitude,
         g.longitude
-    FROM {{ ref('stg_sellers') }} AS s 
-    LEFT JOIN geolocation AS g 
-    ON s.zip_code = g.zip_code
+    FROM {{ ref('snap_dim_sellers') }} AS s
+    LEFT JOIN geolocation AS g ON s.zip_code = g.zip_code
+    WHERE s.dbt_valid_to IS NULL  -- active record only
 )
 
 SELECT * FROM sellers
