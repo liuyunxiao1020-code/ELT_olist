@@ -180,7 +180,7 @@ section{margin-bottom:52px;scroll-margin-top:16px}
   background:var(--primary);color:#fff;border-color:var(--primary);
   font-weight:600;box-shadow:0 1px 4px rgba(29,78,216,.3);
 }
-.map-desc{font-size:11px;color:var(--muted);margin-bottom:14px;padding:8px 12px;background:var(--bg);border-radius:6px}
+.map-desc{font-size:13px;color:var(--text2);font-weight:500;margin-bottom:14px;padding:10px 14px;background:var(--bg);border-radius:6px}
 .geo-grid{display:grid;grid-template-columns:1fr 280px;gap:16px;align-items:start}
 #state-detail{
   background:var(--card);border:1px solid var(--border);
@@ -393,11 +393,11 @@ const CAMP_CLR = {
 const TIER_CLR  = {excellent:'#10B981',good:'#F59E0B',at_risk:'#F97316',critical:'#EF4444'};
 const TREND_CLR = {stable:'#1D4ED8',declining:'#EF4444',inactive:'#94A3B8'};
 const MODES = {
-  customer_per_seller:{ label:'Seller Gap',    unit:'x',    grad:['#EFF6FF','#1D4ED8'], desc:'Customer-to-seller ratio — higher means sellers are underserved in that region.' },
-  avg_freight:        { label:'Avg Freight',   unit:'R$',   grad:['#FFF7ED','#C2410C'], desc:'Average freight cost per delivered order — higher values flag costly shipping regions.' },
-  avg_delivery_days:  { label:'Avg Delivery',  unit:'d',    grad:['#FFF7ED','#C2410C'], desc:'Average days to deliver — higher values indicate logistics challenges.' },
-  avg_health_score:   { label:'Seller Health', unit:'/100', grad:['#FEF2F2','#15803D'], desc:'Average seller health score — lower scores identify regions with at-risk sellers.' },
-  churn_rate_pct:     { label:'Churn Rate',    unit:'%',    grad:['#FFF7ED','#C2410C'], desc:'Percentage of one-time customers — higher means worse retention in that region.' }
+  customer_per_seller:{ label:'Seller Gap',    unit:'x',    grad:['#EFF6FF','#1D4ED8'], desc:'Customer-to-seller ratio — how many customers exist per seller in each state. A high ratio means there are not enough sellers to serve local demand, so customers may wait longer or pay more in freight.' },
+  avg_freight:        { label:'Avg Freight',   unit:'R$',   grad:['#FFF7ED','#C2410C'], desc:'Average freight cost charged per delivered order in each state. Higher values usually mean the region is far from major distribution hubs or has low seller density, making last-mile delivery more expensive.' },
+  avg_delivery_days:  { label:'Avg Delivery',  unit:'d',    grad:['#FFF7ED','#C2410C'], desc:'Average number of days between order placement and delivery to the customer. States with higher values have slower logistics — often linked to long distances, fewer local sellers, or infrastructure gaps.' },
+  avg_health_score:   { label:'Seller Health', unit:'/100', grad:['#FEF2F2','#15803D'], desc:'Average seller health score (0–100) across all active sellers in each state. The score combines on-time delivery rate, review scores, and order volume. Lower scores flag regions with struggling sellers who may need support or monitoring.' },
+  churn_rate_pct:     { label:'Churn Rate',    unit:'%',    grad:['#FFF7ED','#C2410C'], desc:'Percentage of customers who placed only one order and never returned. A high churn rate suggests customers in that region had a poor experience — whether from late delivery, high freight, or product issues — and did not come back.' }
 };
 
 // ── Cross-filter state ────────────────────────────────────────────────────────
